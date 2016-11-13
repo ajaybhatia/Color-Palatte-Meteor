@@ -1,0 +1,45 @@
+<template name="navigation">
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{ pathFor route='home' }}">Color Palatte</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+            {{# if currentUser}}
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="{{ pathFor route='add' }}">Add New</a></li>
+                </ul>
+            {{/if}}
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{#if currentUser}} Welcome {{currentUserEmail}} {{else}}User Management {{/if}}<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        {{#if currentUser}}
+                            <li><a href="#" class="logout"><i class="fa fa-sign-out"></i> Logout</a></li>
+                        {{else}}
+                            <li><a href="{{ pathFor route='register' }}"><i class="fa fa-user"></i> Register</a></li>
+                            <li><a href="{{ pathFor route='signin' }}"><i class="fa fa-sign-in"></i> Login</a></li>
+                        {{/if}}
+                        </ul>
+                    </li>
+                </ul>
+
+                <form class="navbar-form navbar-right" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="search" placeholder="Search">
+                    </div>
+                    <!--<button type="submit" class="btn btn-default">Submit</button>-->
+                </form>
+            </div><!-- /.navbar-collapse -->
+        </div>
+    </nav>
+</template>

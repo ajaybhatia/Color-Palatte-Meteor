@@ -1,0 +1,55 @@
+<template name="content">
+{{# if currentUser}}
+    <div class="container">
+        <div class="row">
+            <div class="alert" role="alert">
+                <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                Your selection is <strong>copied!</strong>
+            </div>
+        {{#each color}}
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                <div class="thumbnail color" style="background: {{code}}; box-shadow: 25px 25px 100px {{code}}; border-radius: 10px 10px">
+                    <div class="caption">
+                        <button type="button" class="close delete-color" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="text-center">
+                            <input class="plain-textbox" type="text" value="{{code}}">
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+        </div>
+    </div>
+{{else}}
+    {{# if isEmpty}}
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <h1 class="h1 text-center">Nothing to Show. Wait for Some user to create a color.</h1>
+            </div>
+        </div>
+    </div>
+    {{else}}
+    <div class="container">
+        <div class="row">
+            <div class="alert" role="alert">
+                <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                Your selection is <strong>copied!</strong>
+            </div>
+            {{#each colorByAll}}
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    <div class="thumbnail color" style="background: {{code}}; box-shadow: 25px 25px 100px {{code}}; border-radius: 10px 10px">
+                        <div class="caption">
+                            <h4 class="text-center">
+                                <input class="plain-textbox" type="text" value="{{code}}">
+                            </h4>
+                            <p class="text-center color white">{{userEmail}}</p>
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+    </div>
+    {{/if}}
+{{/if}}
+</template>
